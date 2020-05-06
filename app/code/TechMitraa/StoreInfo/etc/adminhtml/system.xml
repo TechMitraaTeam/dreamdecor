@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/system_file.xsd">
+    <system>
+        <tab id="techmitraa" translate="label" sortOrder="500">
+            <label>techmitraa</label>
+        </tab>         
+        <section id="storeinfosettings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Store Information Settings</label>
+            <tab>techmitraa</tab>
+            <resource>TechMitraa_StoreInfo::configurations</resource>
+            <group id="techmitraa_storeinfo" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configurations</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,170 @@
+<style>
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.wrapper {
+    margin:0px 20px;
+    padding-top:100px;
+}
+address span{
+    font-size: 10px;
+    font-style: normal; 
+}
+
+.address-row {
+    display: inline-block;
+    width: 100%;
+}
+address {
+    display: inline-block;
+    width:70%;
+    font-style: normal; 
+}
+
+.transactional-data {
+    display: inline-block;
+    width:28%;
+}
+
+.transactional-data-right, .transactional-data-left {
+    display: inline-block;
+    width:49%;
+}
+
+.transactional-data-right {
+    text-align: right;
+}
+
+#title {
+    font-size: 20px;
+    font-weight:bold;
+    margin:100px 0 30px 0;
+}
+
+.order-positions th{
+    text-align:left;
+    vertical-align:top;
+    padding:5px;
+}
+.order-positions table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.order-positions td{
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+    vertical-align:top;
+    padding:5px;
+}
+
+.order-positions .position, .order-positions .qty {
+    width: 10%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin:0;
+}
+
+.order-total {
+    width: 100%;
+}
+
+.order-total table{
+    width: 30%;
+    float: right;
+    text-align: right;
+}
+
+.order-total  td.label {
+    text-align: left;
+}
+</style>
+<?php 
+    $offer      = $block->getParams();
+    $options    = $block->getOptions();
+?>
+<div class="wrapper">
+	<div class="address-row">	
+        <address>
+        	<span><?php echo $block->getStoreInformation(); ?></span><br>
+        	<?php if($block->getCustomerData() != ''):?>
+                <?php echo $block->getCustomerData()->getCompany(); ?><br>
+                <?php echo $block->getCustomerData()->getFirstname().' '.$block->getCustomerData()->getLastname(); ?><br>
+                <?php echo $block->getCustomerData()->getStreet()[0]; ?><br>
+                <?php echo $block->getCustomerData()->getPostcode().' '.$block->getCustomerData()->getCity(); ?><br>
+                <?php echo $block->getCountryname($block->getCustomerData()->getCountryId()); ?>
+            <?php else: ?>
+            <br><br><br><br>
+            <?php endif; ?>
+        </address>
+        <div class="transactional-data">
+        	<div class="transactional-data-left">
+        		<?php echo __('Customer Nr.'); ?>:<br>
+        		<?php echo __('USt-IdNr'); ?>:<br>
+        		<?php echo __('Date'); ?>:
+        	</div>
+        	<div class="transactional-data-right">
+            	<?php if($block->getCustomerData() != ''):?>
+            		<?php echo $block->getCustomerData()->getCustomerId(); ?><br>
+            		<?php echo $block->getCustomerData()->getVatId(); ?><br>
+            	<?php endif; ?>
+        		<?php echo date('d.m.Y'); ?>
+        	</div>
+        </div>
+	</div>   
+    <div id="title"><?php echo __('Your Offer'); ?></div> 
+    <?php
+        echo $this->getLayout()
+        ->createBlock('Magento\Cms\Block\Block')
+        ->setBlockId('pdf-text-custom-1')
+        ->toHtml();
+    ?>
+    <div class="order-positions">
+    	<table style="width: 100%;">
+    		<tr>
+    			<th><?php echo __('Position'); ?></th>
+    			<th><?php echo __('Qty'); ?></th>
+    			<th><?php echo __('Description'); ?></th>
+    			<th style="text-align:right;"><?php echo __('Price'); ?> <?php echo $block->getCurrencySymbol(); ?></th>
+    		</tr>
+            <tr>
+            	<td class="position">1</td>
+            	<td class="qty"><?php echo $offer['numberofcopies']; ?></td>
+            	<td class="description">
+        			<ul>
+            		<?php foreach($options as $option): ?>
+        				<li><b><?php echo $option['label']; ?>:</b> <?php echo $option['value']; ?></li>
+            		<?php endforeach; ?>
+        			</ul>
+            	</td>
+            	<td class="price" style="text-align:right;"><?php echo $offer['total_price']; ?></td>
+            </tr>
+		</table>
+    </div>
+    <div class="order-total">
+    	<table>
+    		<tr>
+    			<td class="label"><?php echo __('Subtotal'); ?>:</td>
+    			<td><?php echo $offer['total_price']; ?></td>
+    		</tr>
+    		<tr>
+    			<td class="label"><?php echo $block->getTaxRate() ?>:</td>
+    			<td><?php echo $block->getTaxAmountByPrice($offer['total_price']); ?></td>
+    		</tr>
+    		<tr>
+    			<td class="label"><?php echo __('Grand Total'); ?>:</td>
+    			<td><?php echo $block->getPriceInclTax($offer['total_price']); ?></td>
+    		</tr>
+		</table>
+		<div style="clear:both"></div>
+    </div>
+    <?php
+        echo $this->getLayout()
+        ->createBlock('Magento\Cms\Block\Block')
+        ->setBlockId('pdf-text-custom-2')
+        ->toHtml();
+    ?>
+</div>

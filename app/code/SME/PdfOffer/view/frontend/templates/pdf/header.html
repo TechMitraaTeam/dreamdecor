@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+body {
+	width:100%;
+	height:50px;
+	padding:0;
+	margin:0;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	text-align:right;
+}
+		</style>
+		<script>
+		function subst() {
+		  var vars={};
+		  var x=document.location.search.substring(1).split('&');
+		  for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+		  var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+		  for(var i in x) {
+		    var y = document.getElementsByClassName(x[i]);
+		    for(var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+		  }
+		}
+		</script>
+	</head>
+	<body onload="subst()">
+		<img src="/media/wysiwyg/pdf-logo.png" style="margin:25px;">
+		<table style="width: 100%;padding:20px;">
+		  <tr>
+		    <td class="section"></td>
+		    <td style="text-align:right">
+		      Seite <span class="page"></span> von <span class="topage"></span>
+		    </td>
+		  </tr>
+		</table>
+    </body>
+</html>

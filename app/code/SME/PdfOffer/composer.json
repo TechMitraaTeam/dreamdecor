@@ -1,0 +1,22 @@
+{
+    "name": "sme/module-pdfoffer",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SME\\PdfOffer\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

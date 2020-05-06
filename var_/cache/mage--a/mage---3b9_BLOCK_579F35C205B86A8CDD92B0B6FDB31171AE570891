@@ -1,0 +1,9 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1587911399;s:6:"expire";i:1587914999;s:4:"tags";s:118:"3b9_BLOCK_HTML,3b9_CAT_C,3b9_CAT_C_3,3b9_CAT_C_4,3b9_CAT_C_5,3b9_CAT_C_6,3b9_CAT_C_7,3b9_CAT_C_9,3b9_CAT_C_10,3b9_MAGE";}
+<nav class="navigation" role="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+                    <li class = "level0 level-top  active ">
+                <a class = "level-top" href = "http://127.0.0.1/furniture/">
+                    Home                </a>
+            </li>
+                <li  class="level0 nav-1 category-item first level-top"><a href="http://127.0.0.1/furniture/beds.html"  class="level-top" ><span>Beds</span></a></li><li  class="level0 nav-2 category-item level-top"><a href="http://127.0.0.1/furniture/sofas.html"  class="level-top" ><span>Sofas</span></a></li><li  class="level0 nav-3 category-item level-top"><a href="http://127.0.0.1/furniture/shoe-racks.html"  class="level-top" ><span>Shoe Racks</span></a></li><li  class="level0 nav-4 category-item level-top"><a href="http://127.0.0.1/furniture/wardrobes.html"  class="level-top" ><span>Wardrobes</span></a></li><li  class="level0 nav-5 category-item level-top"><a href="http://127.0.0.1/furniture/wall-shelves.html"  class="level-top" ><span>Wall Shelves</span></a></li><li  class="level0 nav-6 category-item level-top"><a href="http://127.0.0.1/furniture/study.html"  class="level-top" ><span>Study</span></a></li><li  class="level0 nav-7 category-item last level-top"><a href="http://127.0.0.1/furniture/tables.html"  class="level-top" ><span>Tables</span></a></li>    </ul>
+</nav>
